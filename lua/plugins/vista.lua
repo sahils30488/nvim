@@ -5,6 +5,6 @@ return {
 
 		vim.g.vista_sidebar_width = 30
 		vim.g.vista_echo_cursor = 1
-		vim.keymap.set("n", "<leader>t", ":Vista!!<CR>", { silent = true })
+		vim.keymap.set("n", "<leader>t", ":Vista!!<CR>", { silent = true, desc = "Tags" })
 	end,
 }

@@ -14,11 +14,43 @@ return {
 			telescope.setup({
 				defaults = {
 					path_display = { "smart" },
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden", -- search hidden files
+						"--glob=!**/node_modules/*",
+						"--glob=!**/.venv/*",
+						"--glob=!**/venv/*",
+						"--glob=!**/ve/*",
+						"--glob=!**/.ve/*",
+						"--glob=!**/.git/*",
+						"--glob=!**/__pycache__/*",
+					},
 					mappings = {
 						i = {
 							["<C-k>"] = actions.move_selection_previous, -- move to prev result
 							["<C-j>"] = actions.move_selection_next, -- move to next result
 							["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						},
+					},
+				},
+				pickers = {
+					find_files = {
+						find_command = {
+							"rg",
+							"--files",
+							"--hidden",
+							"--glob=!**/node_modules/*",
+							"--glob=!**/.venv/*",
+							"--glob=!**/venv/*",
+							"--glob=!**/ve/*",
+							"--glob=!**/.ve/*",
+							"--glob=!**/__pycache__/*",
 						},
 					},
 				},
@@ -34,6 +66,7 @@ return {
 			keymap.set("n", "<leader>c", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 			keymap.set("n", "<leader>h", "<cmd>Telescope oldfiles<cr>", { desc = "Search old files" })
 			keymap.set("n", "<leader>r", "<cmd>Telescope registers<cr>", { desc = "[ ] Find registers" })
+			keymap.set("n", "<leader>i", "<cmd>Telescope git_status<cr>", { desc = "git status" })
 		end,
 	},
 	{
@@ -77,6 +110,7 @@ return {
 					file_browser = {
 						-- disables netrw and use telescope-file-browser in its place
 						hijack_netrw = true,
+						hidden = true,
 						mappings = {
 							["i"] = {
 								-- your custom insert mode mappings
@@ -109,7 +143,8 @@ return {
 			})
 			-- To get telescope-file-browser loaded and working with telescope,
 			-- you need to call load_extension, somewhere after setup function:
-			vim.keymap.set("n", "<A-f>", ":Telescope file_browser<CR>")
+			vim.keymap.set("n", "<leader>o", ":Telescope file_browser<CR>")
+
 			require("telescope").load_extension("file_browser")
 		end,
 	},

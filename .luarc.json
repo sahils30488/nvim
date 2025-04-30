@@ -2,5 +2,8 @@
     "diagnostics.globals": [
         "vim",
         "norcalli"
+    ],
+    "diagnostics.disable": [
+        "missing-fields"
     ]
 }
