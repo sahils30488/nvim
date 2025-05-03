@@ -49,3 +49,8 @@ vim.o.fileencoding = "utf-8" -- The encoding written to a file (default: 'utf-8'
 
 vim.o.breakindent = true -- Enable break indent (default: false)
 vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better completion experience (default: 'menu,preview')
+
+-- vim.diagnostic.config({
+-- 	virtual_lines = true,
+-- 	underline = true,
+-- })
