@@ -42,7 +42,8 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<Up>"] = cmp.config.disable, -- disable arrow key selection
-				["<Down>"] = cmp.config.disable, -- disable arrow key selection			["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<Down>"] = cmp.config.disable, -- disable arrow key selection
+				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
